@@ -1,0 +1,338 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<Layout title="Home">
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #ce422b 0%, #a63520 100%);
+      color: white;
+      padding: 4rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-date {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-image {
+      max-width: 100%;
+      height: auto;
+      margin-top: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .section {
+      padding: 4rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #1a1a1a;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .highlight-card {
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 8px;
+      border-left: 4px solid #ce422b;
+    }
+
+    .highlight-card h3 {
+      color: #ce422b;
+      margin-bottom: 1rem;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .schedule-item {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .schedule-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .schedule-time {
+      color: #ce422b;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .schedule-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .schedule-speaker {
+      color: #666;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .venue-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .venue-info {
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    .venue-info p {
+      margin-bottom: 1rem;
+    }
+
+    .venue-info strong {
+      color: #1a1a1a;
+    }
+
+    .register-section {
+      background: linear-gradient(135deg, #ce422b 0%, #a63520 100%);
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    .register-section h2 {
+      color: white;
+    }
+
+    .register-section p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-register {
+      background-color: white;
+      color: #ce422b;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn-register:hover {
+      background-color: #f5f5f5;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+      }
+
+      .about-content,
+      .venue-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>RustConf 2026</h1>
+      <p class="hero-subtitle">Annual Rust Programming Language Conference</p>
+      <p class="hero-date">August 20, 2026 • Portland, OR</p>
+      <div class="hero-buttons">
+        <a href="#register" class="btn">Register Now</a>
+        <a href="#schedule" class="btn btn-secondary">View Schedule</a>
+      </div>
+      <img src={`${baseUrl}assets/event-image-1.png`} alt="RustConf 2026 Hero Banner" class="hero-image" />
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <h2>About RustConf 2026</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>RustConf 2026 is the premier annual conference for the Rust programming language community. Join us in Portland for three days of inspiring talks, hands-on workshops, and networking opportunities.</p>
+        <p>This year's conference features in-depth discussions on embedded systems development, advanced async runtime patterns, and a preview of the highly anticipated 2026 edition of Rust.</p>
+        <p>Whether you're a seasoned Rust developer or just getting started, RustConf 2026 offers something for everyone.</p>
+      </div>
+      <div class="highlights">
+        <div class="highlight-card">
+          <h3>🎯 Embedded Systems</h3>
+          <p>Deep dives into building efficient, safe embedded systems with Rust.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>⚡ Async Runtimes</h3>
+          <p>Explore the latest advances in asynchronous programming and runtime design.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>🚀 2026 Edition</h3>
+          <p>Get an exclusive preview of the upcoming Rust 2026 edition features.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>🤝 Networking</h3>
+          <p>Connect with fellow Rust enthusiasts and industry leaders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section class="section" id="schedule">
+    <h2>Conference Schedule</h2>
+    <div class="schedule-grid">
+      <div class="schedule-item">
+        <div class="schedule-time">Day 1 - August 20</div>
+        <div class="schedule-title">Opening Keynote</div>
+        <div class="schedule-speaker">Featuring industry leaders</div>
+        <p>Join us for an inspiring opening keynote that sets the tone for the conference, highlighting the latest developments in the Rust ecosystem.</p>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">Day 1 - August 20</div>
+        <div class="schedule-title">Embedded Systems Workshop</div>
+        <div class="schedule-speaker">Hands-on technical session</div>
+        <p>Learn practical techniques for building safe and efficient embedded systems using Rust, from microcontrollers to IoT devices.</p>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">Day 2 - August 21</div>
+        <div class="schedule-title">Async Runtime Deep Dive</div>
+        <div class="schedule-speaker">Advanced technical track</div>
+        <p>Explore the internals of modern async runtimes, performance optimization, and best practices for concurrent Rust applications.</p>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">Day 2 - August 21</div>
+        <div class="schedule-title">Community Panel</div>
+        <div class="schedule-speaker">Q&A with Rust core team</div>
+        <p>Participate in an interactive panel discussion with members of the Rust core team and community leaders.</p>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">Day 3 - August 22</div>
+        <div class="schedule-title">Rust 2026 Edition Preview</div>
+        <div class="schedule-speaker">Exclusive announcement</div>
+        <p>Get an exclusive first look at the features and improvements coming in the Rust 2026 edition.</p>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">Day 3 - August 22</div>
+        <div class="schedule-title">Closing Remarks & Networking</div>
+        <div class="schedule-speaker">Celebration and connections</div>
+        <p>Wrap up the conference with closing remarks and enjoy an evening of networking with fellow attendees.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue Section -->
+  <section class="section" id="venue">
+    <h2>Venue & Location</h2>
+    <div class="venue-content">
+      <div class="venue-info">
+        <h3>Portland Convention Center</h3>
+        <p><strong>Address:</strong> 777 NE Martin Luther King Jr Blvd, Portland, OR 97232</p>
+        <p><strong>Date:</strong> August 20-22, 2026</p>
+        <p><strong>Capacity:</strong> 2,000+ attendees</p>
+        <p><strong>Parking:</strong> On-site parking available</p>
+        <p><strong>Accessibility:</strong> Fully accessible venue with accommodations for all attendees</p>
+        <p><strong>Getting There:</strong> Located near public transportation with easy access from Portland International Airport (PDX).</p>
+      </div>
+      <div class="venue-info">
+        <h3>Why Portland?</h3>
+        <p>Portland is home to a vibrant tech community and has been a hub for open-source development. The city offers excellent restaurants, breweries, and attractions for attendees to explore.</p>
+        <p><strong>Nearby Attractions:</strong></p>
+        <ul style="margin-left: 1rem; margin-top: 1rem;">
+          <li>Powell's City of Books</li>
+          <li>Portland Art Museum</li>
+          <li>Oregon Coast (1.5 hours away)</li>
+          <li>Mount Hood (1 hour away)</li>
+          <li>Vibrant food and brewery scene</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Register Section -->
+  <section class="register-section" id="register">
+    <div class="container">
+      <h2>Ready to Join Us?</h2>
+      <p>Secure your spot at RustConf 2026 and be part of the largest gathering of Rust developers.</p>
+      <button class="btn btn-register">Register for RustConf 2026</button>
+      <p style="margin-top: 2rem; font-size: 0.95rem; color: rgba(255, 255, 255, 0.8);">Early bird tickets available until July 1, 2026</p>
+    </div>
+  </section>
+</Layout>
