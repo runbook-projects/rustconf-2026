@@ -1,0 +1,15 @@
+{
+  "name": "rustconf-2026",
+  "version": "1.0.0",
+  "description": "RustConf 2026 - Annual Rust programming language conference",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.0.0"
+  },
+  "devDependencies": {}
+}
